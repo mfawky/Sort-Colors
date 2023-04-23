@@ -81,7 +81,7 @@ void PickAlgorithm(int array[], int size)
                 QuickSort(array, 0, size);
                 break;
             default:
-                puts("You inserted wrong number please try again with right number for specific algorithm.");
+                puts("You inserted wrong number please try again with right number for specific algorithm.\n");
                 PrintAlgorithmsTitles();
                 break;
             }
@@ -194,9 +194,7 @@ int main()
 
         GenerateFilledArray(array, size);
 
-        int ArrayIsValid = ValidateArray(array, size);
-
-        if (!ArrayIsValid)
+        if (!ValidateArray(array, size))
         {
             puts("Your input is not valid please make sure that all inputs are 0 or 1 or 2\n");
             size = 1;

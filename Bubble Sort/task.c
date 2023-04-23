@@ -178,7 +178,7 @@ int main()
     int size;
     do {
 
-        printf("insert your preferable size from 1 to 300\n");
+        printf("insert any size from 1 to 300\n");
         scanf("%d", &size);
 
         if (size > 300 || size < 1)

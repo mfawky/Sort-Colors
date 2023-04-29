@@ -65,16 +65,33 @@ void MergeSort(int array[], int start, int end)
         Merge(array, start, middle, end);
     }
 }
-void SelectionSort(int array[], int end)
+void SelectionSort(int array[], int n)
 {
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_position = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (array[j] < array[min_position])
+            {
+                min_position = j;
+            }
+        }
+        if (min_position != i)
+        {
+            swap(&array[min_position], &array[i]);
+        }
+    }
 }
 
 void BubbleSort(int arr[], int end)
 {
     for (int i = 0; i < sizeof(arr) - 1; i++)
     {
-        for (int j = 0; j < sizeof(arr) - i - 2; j++){
-            if (arr[j] > arr[j + 1]){
+        for (int j = 0; j < sizeof(arr) - i - 2; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
                 swap(&arr[j], &arr[j + 1]);
             }
         }

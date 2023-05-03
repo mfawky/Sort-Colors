@@ -1,28 +1,27 @@
-
 void swap(int *num1, int *num2)
 {
     int temp = *num1;
     *num1 = *num2;
     *num2 = temp;
 }
-void InsertionSort(int array[], int end)
+void InsertionSort(int nums[], int n)
 {
-    for (int i = 1; i < end; i++)
+    for (int i = 1; i < n; i++)
     {
-        int key = array[i];
+        int key = nums[i];
         int index = i;
-        for (int j = i - 1; j >= 0 && key < array[j]; j--)
+        for (int j = i - 1; j >= 0 && key < nums[j]; j--)
         {
             if (key <= array[j])
             {
-                array[j + 1] = array[j];
+                nums[j + 1] = nums[j];
                 index = j;
             }
         }
-        array[index] = key;
+        nums[index] = key;
     }
 }
-void Merge(int array[], int start, int middle, int end)
+void Merge(int nums[], int start, int middle, int end)
 {
     int lSize = middle - start + 1,
         rSize = end - middle;
@@ -31,12 +30,12 @@ void Merge(int array[], int start, int middle, int end)
 
     //  Fill left array. // 0
     for (int i = 0; i < lSize; i++)
-        L[i] = array[i + start];
+        L[i] = nums[i + start];
     L[lSize] = 3;
 
     //  Fill right array. // 0
     for (int i = 0; i < rSize; i++)
-        R[i] = array[i + middle + 1];
+        R[i] = nums[i + middle + 1];
     R[rSize] = 3;
 
     int leftIndexTracer = 0, rightIndexTracer = 0;
@@ -45,60 +44,60 @@ void Merge(int array[], int start, int middle, int end)
     while (start <= end)
     {
         if (L[leftIndexTracer] < R[rightIndexTracer])
-            array[start++] = L[leftIndexTracer++];
+            nums[start++] = L[leftIndexTracer++];
         else if (L[leftIndexTracer] > R[rightIndexTracer])
-            array[start++] = R[rightIndexTracer++];
+            nums[start++] = R[rightIndexTracer++];
         else
         {
-            array[start++] = L[leftIndexTracer++];
-            array[start++] = R[rightIndexTracer++];
+            nums[start++] = L[leftIndexTracer++];
+            nums[start++] = R[rightIndexTracer++];
         }
     }
 }
-void MergeSort(int array[], int start, int end)
+void MergeSort(int nums[], int start, int end)
 {
     if (start < end)
     {
         int middle = (start + end) / 2;
-        MergeSort(array, start, middle);
-        MergeSort(array, middle + 1, end);
-        Merge(array, start, middle, end);
+        MergeSort(nums, start, middle);
+        MergeSort(nums, middle + 1, end);
+        Merge(nums, start, middle, end);
     }
 }
-void SelectionSort(int array[], int n)
+void SelectionSort(int nums[], int n)
 {
     for (int i = 0; i < n - 1; i++)
     {
         int min_position = i;
         for (int j = i + 1; j < n; j++)
         {
-            if (array[j] < array[min_position])
+            if (nums[j] < nums[min_position])
             {
                 min_position = j;
             }
         }
         if (min_position != i)
         {
-            swap(&array[min_position], &array[i]);
+            swap(&nums[min_position], &nums[i]);
         }
     }
 }
 
-void BubbleSort(int arr[], int end)
+void BubbleSort(int nums[], int n)
 {
-    for (int i = 0; i < sizeof(arr) - 1; i++)
+    for (int i = 0; i < sizeof(nums) - 1; i++)
     {
-        for (int j = 0; j < sizeof(arr) - i - 2; j++)
+        for (int j = 0; j < sizeof(nums) - i - 2; j++)
         {
-            if (arr[j] > arr[j + 1])
+            if (nums[j] > arr[j + 1])
             {
-                swap(&arr[j], &arr[j + 1]);
+                swap(&nums[j], &nums[j + 1]);
             }
         }
     }
 }
 
-void QuickSort(int array[], int low, int high)
+void QuickSort(int nums[], int low, int high)
 {
     int L, R, pivot, temp;
     if (low < high)
@@ -109,29 +108,29 @@ void QuickSort(int array[], int low, int high)
         while (L < R)
         {
             // loop on the left side
-            while (array[L] <= array[pivot] && L < high)
+            while (nums[L] <= nums[pivot] && L < high)
             {
                 L++;
             }
             // loop on the right side
-            while (array[R] > array[pivot])
+            while (nums[R] > nums[pivot])
             {
                 R--;
             }
             // swap the two pointers values cause they are swaped
             if (L < R)
             {
-                temp = array[L];
-                array[L] = array[R];
-                array[R] = temp;
+                temp = nums[L];
+                nums[L] = nums[R];
+                nums[R] = temp;
             }
         }
         // swap the value from the right pointer to pivot
-        temp = array[pivot];
-        array[pivot] = array[R];
-        array[R] = temp;
+        temp = nums[pivot];
+        nums[pivot] = nums[R];
+        nums[R] = temp;
 
-        QuickSort(array, low, R - 1);
-        QuickSort(array, R + 1, high);
+        QuickSort(nums, low, R - 1);
+        QuickSort(nums, R + 1, high);
     }
 }

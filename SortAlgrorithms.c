@@ -12,7 +12,7 @@ void InsertionSort(int nums[], int n)
         int index = i;
         for (int j = i - 1; j >= 0 && key < nums[j]; j--)
         {
-            if (key <= array[j])
+            if (key <= nums[j])
             {
                 nums[j + 1] = nums[j];
                 index = j;
@@ -89,7 +89,7 @@ void BubbleSort(int nums[], int n)
     {
         for (int j = 0; j < n - 1; j++)
         {
-            if (nums[j] > arr[j + 1])
+            if (nums[j] > nums[j + 1])
             {
                 swap(&nums[j], &nums[j + 1]);
             }

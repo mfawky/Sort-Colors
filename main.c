@@ -8,7 +8,7 @@ int main()
     do
     {
         system("cls");
-        printf("Insert any size from 1 to 300\n");
+        printf("Sort an array of numbers with n objects colored red, white or blue As numbsers (0 ,1 ,2 )\nEnter the size of the array\n");
         scanf("%d", &size);
 
         if (size > 300 || size < 1)
@@ -22,7 +22,7 @@ int main()
 
         int array[size];
 
-        puts("Fill the array please (only accepts integers 0, 1, or 2)");
+        printf("Enter %d intergers seperated by space or NextLine (only accepts integers 0, 1, or 2)\n",size);
 
         GenerateFilledArray(array, size);
 

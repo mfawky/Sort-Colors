@@ -85,9 +85,9 @@ void SelectionSort(int nums[], int n)
 
 void BubbleSort(int nums[], int n)
 {
-    for (int i = 0; i < sizeof(nums) - 1; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < sizeof(nums) - i - 2; j++)
+        for (int j = 0; j < n - 1; j++)
         {
             if (nums[j] > arr[j + 1])
             {
